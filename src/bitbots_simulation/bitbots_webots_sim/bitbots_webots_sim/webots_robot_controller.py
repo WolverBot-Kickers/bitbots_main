@@ -844,10 +844,12 @@ class RobotController:
         img_msg.header.stamp = Time(seconds=int(self.time), nanoseconds=int(self.time % 1 * 1e9)).to_msg()
         img_msg.header.frame_id = self.camera_optical_frame
         img_msg.height = self.camera.getHeight()
-        img_msg.width = self.camera.getWidth()
-        img_msg.encoding = "bgra8"
-        img_msg.step = 4 * self.camera.getWidth()
-        img = self.camera.getImage()
+        try:
+            img = self.camera.getImage()
+            if img is None:
+                return
+        except ValueError:
+            return
         img_msg.data = img
         self.pub_cam.publish(img_msg)
 

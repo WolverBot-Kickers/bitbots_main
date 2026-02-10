@@ -154,10 +154,7 @@ class SupervisorController:
             endpoint_node = endpoint_field.getSFNode()
             self.collect_joint_and_link_node_references(endpoint_node, joint_dict, link_dict)
         # needs to be done because Webots has two different getField functions for proto nodes and normal nodes
-        if node.isProto():
-            children_field = node.getProtoField("children")
-        else:
-            children_field = node.getField("children")
+        children_field = node.getField("children")
         if children_field is not None:
             for i in range(children_field.getCount()):
                 child = children_field.getMFNode(i)

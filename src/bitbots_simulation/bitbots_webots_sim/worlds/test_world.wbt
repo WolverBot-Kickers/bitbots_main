@@ -1,0 +1,16 @@
+#VRML_SIM R2025a utf8
+EXTERNPROTO "../protos/robots/Wolfgang/TestRobot.proto"
+
+WorldInfo {
+}
+Viewpoint {
+}
+Background {
+}
+TestRobot {
+}
+Robot {
+  name "supervisor"
+  supervisor TRUE
+  controller "<extern>"
+}

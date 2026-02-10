@@ -1,4 +1,4 @@
-#VRML_SIM R2025a utf8
+#VRML_SIM R2022b utf8
 # license: Apache License 2.0
 # license url: http://www.apache.org/licenses/LICENSE-2.0
 # This is a proto file for Webots for the Wolfgang
@@ -92,14 +92,11 @@ PROTO Wolfgang [
   field  SFVec3f     pid             10 0 0
   field  SFFloat     encoderResolution 0.00153398078
   field  MFNode      externalCamera  NULL
-  field  SFColor     teamColor       1 0 0          # Is `WolfgangMarker.baseColor`
-  field  MFString    jerseyTexture   ["Wolfgang_textures/number_1.png"] # Is `WolfgangMarker.textureUrl`
 ]
 {
   Robot {
     translation IS translation
     rotation IS rotation
-    name IS name
     controller IS controller
     controllerArgs IS controllerArgs
     customData IS customData
@@ -109,9 +106,18 @@ PROTO Wolfgang [
     recognitionColors [
       0.2 0.2 0.2
     ]
-
-
-
+    %{
+      if fields.name.value ~= '' then
+        local color = "none"
+        local number = 0
+        -- name is supposed to be something like "red player 2" or "blue player 1"
+        local words = {}
+        for word in fields.name.value:gmatch("%w+") do table.insert(words, word) end
+        if #words >= 3 then
+          color = words[1]
+          number = words[3]
+        end
+    }%
     model "wolfgang"
     children [
       # for creating videos from the robot, not used during matches
@@ -237,8 +243,14 @@ PROTO Wolfgang [
         children [
           Shape {
             appearance WolfgangMarker{
-              textureUrl IS jerseyTexture
-                  baseColor IS teamColor
+              textureUrl [ %{='"Wolfgang_textures/number_' .. number .. '.png"'}% ]
+                %{ if color == "red" then }%
+                  baseColor  1.0, 0.0, 0.0
+                %{ elseif color == "blue" then }%
+                  baseColor  0.0, 0.0, 1.0
+                %{else}%
+                  baseColor  0.0, 0.0, 0.0
+                 %{ end }%
             }
             geometry Box {
               size 0.15 0.005 0.08
@@ -252,8 +264,14 @@ PROTO Wolfgang [
         children [
           Shape {
             appearance WolfgangMarker{
-              textureUrl IS jerseyTexture
-                  baseColor IS teamColor
+              textureUrl [ %{='"Wolfgang_textures/number_' .. number .. '.png"'}% ]
+                %{ if color == "red" then }%
+                  baseColor  1.0, 0.0, 0.0
+                %{ elseif color == "blue" then }%
+                  baseColor  0.0, 0.0, 1.0
+                %{else}%
+                  baseColor  0.0, 0.0, 0.0
+                %{ end }%
               }
             geometry Box {
               size 0.15 0.005 0.08
@@ -501,7 +519,13 @@ PROTO Wolfgang [
                     children [
                       Shape {
                         appearance WolfgangMarker{
+                          %{ if color == "red" then }%
                             baseColor  1.0, 0.0, 0.0
+                          %{ elseif color == "blue" then }%
+                            baseColor  0.0, 0.0, 1.0
+                          %{else}%
+                            baseColor  0.0, 0.0, 0.0
+                          %{ end }%
                         }
                         geometry Box {
                           size 0.07 0.005 0.04
@@ -610,6 +634,7 @@ PROTO Wolfgang [
                         }
                       ]
                       name "r_lower_arm [arm]"
+                      %{if fields.enableBoundingObject.value then}%
                       boundingObject Group {
                         children [
                           Transform {
@@ -755,6 +780,8 @@ PROTO Wolfgang [
                           }
                         ]
                       }
+                      %{ end }%
+                      %{if fields.enablePhysics.value then}%
                         physics Physics {
                           density -1
                           mass 0.207774
@@ -764,10 +791,12 @@ PROTO Wolfgang [
                             -1.161880e-06 -5.015150e-09 -3.226660e-08
                           ]
                         }
+                      %{ end }%
                     }
                   }
                 ]
                 name "r_upper_arm [arm]"
+                %{if fields.enableBoundingObject.value then}%
                 boundingObject Group {
                   children [
                     Transform {
@@ -866,6 +895,8 @@ PROTO Wolfgang [
                     }
                   ]
                 }
+                %{ end }%
+                %{if fields.enablePhysics.value then}%
                   physics Physics {
                     density -1
                     mass 0.228498
@@ -875,10 +906,12 @@ PROTO Wolfgang [
                       8.094790e-07 7.570950e-08 -2.798500e-06
                     ]
                   }
+                %{ end }%
               }
             }
           ]
           name "r_shoulder"
+          %{if fields.enableBoundingObject.value then}%
           boundingObject Group {
             children [
               Transform {
@@ -930,6 +963,8 @@ PROTO Wolfgang [
               }
             ]
           }
+          %{ end }%
+          %{if fields.enablePhysics.value then}%
             physics Physics {
               density -1
               mass 0.041445
@@ -939,6 +974,7 @@ PROTO Wolfgang [
                 7.630580e-06 -9.413860e-10 8.718250e-10
               ]
             }
+          %{ end }%
         }
       }
       DEF LShoulderPitchJoint HingeJointWithBacklash {
@@ -1033,7 +1069,13 @@ PROTO Wolfgang [
                     children [
                       Shape {
                         appearance WolfgangMarker{
+                          %{ if color == "red" then }%
                             baseColor  1.0, 0.0, 0.0
+                          %{ elseif color == "blue" then }%
+                            baseColor  0.0, 0.0, 1.0
+                          %{else}%
+                            baseColor  0.0, 0.0, 0.0
+                          %{ end }%
                         }
                         geometry Box {
                           size 0.07 0.005 0.04
@@ -1041,6 +1083,7 @@ PROTO Wolfgang [
                       }
                     ]
                   }
+                  %{end}%
                   Transform {
                     translation -0.014700 -0.010500 -0.023500
                     rotation -0.577350 -0.577352 0.577350 2.094399
@@ -1150,6 +1193,7 @@ PROTO Wolfgang [
                         }
                       ]
                       name "l_lower_arm [arm]"
+                      %{if fields.enableBoundingObject.value then}%
                       boundingObject Group {
                         children [
                           Transform {
@@ -1295,6 +1339,8 @@ PROTO Wolfgang [
                           }
                         ]
                       }
+                      %{ end }%
+                      %{if fields.enablePhysics.value then}%
                         physics Physics {
                           density -1
                           mass 0.207774
@@ -1304,10 +1350,12 @@ PROTO Wolfgang [
                             -1.148360e-05 5.011780e-09 -3.226660e-08
                           ]
                         }
+                      %{ end }%
                     }
                   }
                 ]
                 name "l_upper_arm [arm]"
+                %{if fields.enableBoundingObject.value then}%
                 boundingObject Group {
                   children [
                     Transform {
@@ -1406,6 +1454,8 @@ PROTO Wolfgang [
                     }
                   ]
                 }
+                %{ end }%
+                %{if fields.enablePhysics.value then}%
                   physics Physics {
                     density -1
                     mass 0.228498
@@ -1415,10 +1465,12 @@ PROTO Wolfgang [
                       8.094790e-07 7.570950e-08 -2.798500e-06
                     ]
                   }
+                %{ end }%
               }
             }
           ]
           name "l_shoulder"
+          %{if fields.enableBoundingObject.value then}%
           boundingObject Group {
             children [
               Transform {
@@ -1470,6 +1522,8 @@ PROTO Wolfgang [
               }
             ]
           }
+          %{ end }%
+          %{if fields.enablePhysics.value then}%
             physics Physics {
               density -1
               mass 0.041445
@@ -1479,6 +1533,7 @@ PROTO Wolfgang [
                 7.630580e-06 9.413860e-10 -8.718250e-10
               ]
             }
+          %{ end }%
         }
       }
       DEF RHipYawJoint HingeJointWithBacklash {
@@ -1920,9 +1975,13 @@ PROTO Wolfgang [
                                             rotation -0.000000 0.000000 1.000000 1.570800
                                             name "r_toe"
                                           }
+                                          %{if fields.enableFootSensors.value then}%
                                           DEF rlb TouchSensor {
                                             type "force"
                                             resolution 0.00005
+                                          %{else}%
+                                          DEF rlb Solid {
+                                          %{end}%
                                             translation -0.030000 -0.007000 -0.034000
                                             rotation 0.70710678 0.70710678 0.0 3.141592653589793
                                             children [
@@ -1941,6 +2000,7 @@ PROTO Wolfgang [
                                               }
                                             ]
                                             name "rlb"
+                                            %{if fields.enableBoundingObject.value then}%
                                             boundingObject DEF CLEAT_CAPSULE Transform {
                                               translation 0.000000 0.000000 0.005000
                                               rotation -0.000000 0.000000 1.000000 1.570796
@@ -1951,6 +2011,8 @@ PROTO Wolfgang [
                                                 }
                                               ]
                                             }
+                                            %{ end }%
+                                            %{if fields.enablePhysics.value then}%
                                               physics Physics {
                                                 density -1
                                                 mass 0.001660
@@ -1960,10 +2022,15 @@ PROTO Wolfgang [
                                                   -3.374920e-26 6.895340e-25 -1.099300e-09
                                                 ]
                                               }
+                                            %{ end }%
                                           }
+                                          %{if fields.enableFootSensors.value then}%
                                           DEF rlf TouchSensor {
                                             type "force"
                                             resolution 0.00005
+                                          %{else}%
+                                          DEF rlf Solid {
+                                          %{end}%
                                             translation -0.030000 0.177000 -0.034000
                                             rotation 0.70710678 0.70710678 0.0 3.141592653589793
                                             children [
@@ -1982,7 +2049,10 @@ PROTO Wolfgang [
                                               }
                                             ]
                                             name "rlf"
+                                            %{if fields.enableBoundingObject.value then}%
                                             boundingObject USE CLEAT_CAPSULE
+                                            %{ end }%
+                                            %{if fields.enablePhysics.value then}%
                                               physics Physics {
                                                 density -1
                                                 mass 0.001660
@@ -1992,10 +2062,15 @@ PROTO Wolfgang [
                                                   9.475850e-26 8.925620e-25 -1.099300e-09
                                                 ]
                                               }
+                                            %{ end }%
                                           }
+                                          %{if fields.enableFootSensors.value then}%
                                           DEF rrf TouchSensor {
                                             type "force"
                                             resolution 0.00005
+                                          %{else}%
+                                          DEF rrf Solid {
+                                          %{end}%
                                             translation 0.060000 0.177000 -0.034000
                                             rotation 0.70710678 0.70710678 0.0 3.141592653589793
                                             children [
@@ -2014,7 +2089,10 @@ PROTO Wolfgang [
                                               }
                                             ]
                                             name "rrf"
+                                            %{if fields.enableBoundingObject.value then}%
                                             boundingObject USE CLEAT_CAPSULE
+                                            %{ end }%
+                                            %{if fields.enablePhysics.value then}%
                                               physics Physics {
                                                 density -1
                                                 mass 0.001660
@@ -2024,10 +2102,15 @@ PROTO Wolfgang [
                                                   -1.716080e-26 2.077160e-24 -1.099300e-09
                                                 ]
                                               }
+                                            %{ end }%
                                           }
+                                          %{if fields.enableFootSensors.value then}%
                                           DEF rrb TouchSensor {
                                             type "force"
                                             resolution 0.00005
+                                          %{else}%
+                                          DEF rrb Solid {
+                                          %{end}%
                                             translation 0.060000 -0.007000 -0.034000
                                             rotation 0.70710678 0.70710678 0.0 3.141592653589793
                                             children [
@@ -2046,7 +2129,10 @@ PROTO Wolfgang [
                                               }
                                             ]
                                             name "rrb"
+                                            %{if fields.enableBoundingObject.value then}%
                                             boundingObject USE CLEAT_CAPSULE
+                                            %{ end }%
+                                            %{if fields.enablePhysics.value then}%
                                               physics Physics {
                                                 density -1
                                                 mass 0.001660
@@ -2056,9 +2142,11 @@ PROTO Wolfgang [
                                                   -5.419470e-26 3.455020e-24 -1.099300e-09
                                                 ]
                                               }
+                                            %{ end }%
                                           }
                                         ]
                                         name "r_foot [foot]"
+                                        %{if fields.enableBoundingObject.value then}%
                                         boundingObject Group {
                                           children [
                                             Transform {
@@ -2099,6 +2187,8 @@ PROTO Wolfgang [
                                             }
                                           ]
                                         }
+                                        %{ end }%
+                                        %{if fields.enablePhysics.value then}%
                                           physics Physics {
                                             density -1
                                             mass 0.268240
@@ -2108,10 +2198,12 @@ PROTO Wolfgang [
                                               -3.293450e-05 5.014360e-06 -1.776930e-05
                                             ]
                                           }
+                                        %{ end }%
                                       }
                                     }
                                   ]
                                   name "r_ankle"
+                                  %{if fields.enableBoundingObject.value then}%
                                   boundingObject Group {
                                     children [
                                       Transform {
@@ -2170,6 +2262,8 @@ PROTO Wolfgang [
                                       }
                                     ]
                                   }
+                                  %{ end }%
+                                  %{if fields.enablePhysics.value then}%
                                     physics Physics {
                                       density -1
                                       mass 0.319807
@@ -2179,10 +2273,12 @@ PROTO Wolfgang [
                                         -4.537980e-06 6.109860e-07 -7.450810e-07
                                       ]
                                     }
+                                  %{ end }%
                                 }
                               }
                             ]
                             name "r_lower_leg"
+                            %{if fields.enableBoundingObject.value then}%
                             boundingObject Group {
                               children [
                                 Transform {
@@ -2353,6 +2449,8 @@ PROTO Wolfgang [
                                 }
                               ]
                             }
+                            %{ end }%
+                            %{if fields.enablePhysics.value then}%
                               physics Physics {
                                 density -1
                                 mass 0.088064
@@ -2362,10 +2460,12 @@ PROTO Wolfgang [
                                   8.111860e-07 -8.859630e-06 2.735930e-05
                                 ]
                               }
+                            %{ end }%
                           }
                         }
                       ]
                       name "r_upper_leg"
+                      %{if fields.enableBoundingObject.value then}%
                       boundingObject Group {
                         children [
                           Transform {
@@ -2710,6 +2810,8 @@ PROTO Wolfgang [
                           }
                         ]
                       }
+                      %{ end }%
+                      %{if fields.enablePhysics.value then}%
                         physics Physics {
                           density -1
                           mass 0.242311
@@ -2719,10 +2821,12 @@ PROTO Wolfgang [
                             8.335820e-06 1.677430e-05 -4.689140e-06
                           ]
                         }
+                      %{ end }%
                     }
                   }
                 ]
                 name "r_hip_2"
+                %{if fields.enableBoundingObject.value then}%
                 boundingObject Group {
                   children [
                     Transform {
@@ -2781,6 +2885,8 @@ PROTO Wolfgang [
                     }
                   ]
                 }
+                %{ end }%
+                %{if fields.enablePhysics.value then}%
                   physics Physics {
                     density -1
                     mass 0.319807
@@ -2790,10 +2896,12 @@ PROTO Wolfgang [
                       6.085610e-08 6.672480e-07 3.876080e-06
                     ]
                   }
+                %{ end }%
               }
             }
           ]
           name "r_hip_1"
+          %{if fields.enableBoundingObject.value then}%
           boundingObject Group {
             children [
               Transform {
@@ -2835,6 +2943,8 @@ PROTO Wolfgang [
               }
             ]
           }
+          %{ end }%
+          %{if fields.enablePhysics.value then}%
             physics Physics {
               density -1
               mass 0.068973
@@ -2844,6 +2954,7 @@ PROTO Wolfgang [
                 -2.444750e-14 3.067930e-15 -6.566880e-11
               ]
             }
+          %{ end }%
         }
       }
       DEF LHipYawJoint HingeJointWithBacklash {
@@ -3285,9 +3396,13 @@ PROTO Wolfgang [
                                             rotation 0.000000 -0.000000 1.000000 1.570800
                                             name "l_toe"
                                           }
+                                          %{if fields.enableFootSensors.value then}%
                                           DEF llb TouchSensor {
                                             type "force"
                                             resolution 0.00005
+                                          %{else}%
+                                          DEF llb Solid {
+                                          %{end}%
                                             translation -0.060000 -0.007000 -0.034000
                                             rotation 0.70710678 0.70710678 0.0 3.141592653589793
                                             children [
@@ -3306,7 +3421,10 @@ PROTO Wolfgang [
                                               }
                                             ]
                                             name "llb"
+                                            %{if fields.enableBoundingObject.value then}%
                                             boundingObject USE CLEAT_CAPSULE
+                                            %{ end }%
+                                            %{if fields.enablePhysics.value then}%
                                               physics Physics {
                                                 density -1
                                                 mass 0.001660
@@ -3316,10 +3434,15 @@ PROTO Wolfgang [
                                                   -2.540260e-27 -3.401230e-27 -1.099300e-09
                                                 ]
                                               }
+                                            %{ end }%
                                           }
+                                          %{if fields.enableFootSensors.value then}%
                                           DEF llf TouchSensor {
                                             type "force"
                                             resolution 0.00005
+                                          %{else}%
+                                          DEF llf Solid {
+                                          %{end}%
                                             translation -0.060000 0.177000 -0.034000
                                             rotation 0.70710678 0.70710678 0.0 3.141592653589793
                                             children [
@@ -3338,7 +3461,10 @@ PROTO Wolfgang [
                                               }
                                             ]
                                             name "llf"
+                                            %{if fields.enableBoundingObject.value then}%
                                             boundingObject USE CLEAT_CAPSULE
+                                            %{ end }%
+                                            %{if fields.enablePhysics.value then}%
                                               physics Physics {
                                                 density -1
                                                 mass 0.001660
@@ -3348,10 +3474,15 @@ PROTO Wolfgang [
                                                   2.251720e-27 8.036960e-25 -1.099300e-09
                                                 ]
                                               }
+                                            %{ end }%
                                           }
+                                          %{if fields.enableFootSensors.value then}%
                                           DEF lrf TouchSensor {
                                             type "force"
                                             resolution 0.00005
+                                          %{else}%
+                                          DEF lrf Solid {
+                                          %{end}%
                                             translation 0.030000 0.177000 -0.034000
                                             rotation 0.70710678 0.70710678 0.0 3.141592653589793
                                             children [
@@ -3370,7 +3501,10 @@ PROTO Wolfgang [
                                               }
                                             ]
                                             name "lrf"
+                                            %{if fields.enableBoundingObject.value then}%
                                             boundingObject USE CLEAT_CAPSULE
+                                            %{ end }%
+                                            %{if fields.enablePhysics.value then}%
                                               physics Physics {
                                                 density -1
                                                 mass 0.001660
@@ -3380,10 +3514,15 @@ PROTO Wolfgang [
                                                   2.251720e-27 8.036960e-25 -1.099300e-09
                                                 ]
                                               }
+                                            %{ end }%
                                           }
+                                          %{if fields.enableFootSensors.value then}%
                                           DEF lrb TouchSensor {
                                             type "force"
                                             resolution 0.00005
+                                          %{else}%
+                                          DEF lrb Solid {
+                                          %{end}%
                                             translation 0.030000 -0.007000 -0.034000
                                             rotation 0.70710678 0.70710678 0.0 3.141592653589793
                                             children [
@@ -3402,7 +3541,10 @@ PROTO Wolfgang [
                                               }
                                             ]
                                             name "lrb"
+                                            %{if fields.enableBoundingObject.value then}%
                                             boundingObject USE CLEAT_CAPSULE
+                                            %{ end }%
+                                            %{if fields.enablePhysics.value then}%
                                               physics Physics {
                                                 density -1
                                                 mass 0.001660
@@ -3412,9 +3554,11 @@ PROTO Wolfgang [
                                                   1.696600e-26 -1.091180e-24 -1.099300e-09
                                                 ]
                                               }
+                                            %{ end }%
                                           }
                                         ]
                                         name "l_foot [foot]"
+                                        %{if fields.enableBoundingObject.value then}%
                                         boundingObject Group {
                                           children [
                                             Transform {
@@ -3458,6 +3602,8 @@ PROTO Wolfgang [
 
                                           ]
                                         }
+                                        %{ end }%
+                                        %{if fields.enablePhysics.value then}%
                                           physics Physics {
                                             density -1
                                             mass 0.268240
@@ -3467,10 +3613,12 @@ PROTO Wolfgang [
                                               3.211040e-05 -5.092230e-06 -1.776930e-05
                                             ]
                                           }
+                                        %{ end }%
                                       }
                                     }
                                   ]
                                   name "l_ankle"
+                                  %{if fields.enableBoundingObject.value then}%
                                   boundingObject Group {
                                     children [
                                       Transform {
@@ -3529,6 +3677,8 @@ PROTO Wolfgang [
                                       }
                                     ]
                                   }
+                                  %{ end }%
+                                  %{if fields.enablePhysics.value then}%
                                     physics Physics {
                                       density -1
                                       mass 0.319807
@@ -3538,10 +3688,12 @@ PROTO Wolfgang [
                                         4.538570e-06 -6.750130e-07 -7.240730e-07
                                       ]
                                     }
+                                  %{ end }%
                                 }
                               }
                             ]
                             name "l_lower_leg"
+                            %{if fields.enableBoundingObject.value then}%
                             boundingObject Group {
                               children [
                                 Transform {
@@ -3712,6 +3864,8 @@ PROTO Wolfgang [
                                 }
                               ]
                             }
+                            %{ end }%
+                            %{if fields.enablePhysics.value then}%
                               physics Physics {
                                 density -1
                                 mass 0.088064
@@ -3721,10 +3875,12 @@ PROTO Wolfgang [
                                   -1.116610e-06 -8.911270e-06 -2.544810e-05
                                 ]
                               }
+                            %{ end }%
                           }
                         }
                       ]
                       name "l_upper_leg"
+                      %{if fields.enableBoundingObject.value then}%
                       boundingObject Group {
                         children [
                           Transform {
@@ -4069,6 +4225,8 @@ PROTO Wolfgang [
                           }
                         ]
                       }
+                      %{ end }%
+                      %{if fields.enablePhysics.value then}%
                         physics Physics {
                           density -1
                           mass 0.242311
@@ -4078,10 +4236,12 @@ PROTO Wolfgang [
                             -2.807040e-05 2.533730e-06 4.334050e-06
                           ]
                         }
+                      %{ end }%
                     }
                   }
                 ]
                 name "l_hip_2"
+                %{if fields.enableBoundingObject.value then}%
                 boundingObject Group {
                   children [
                     Transform {
@@ -4140,6 +4300,8 @@ PROTO Wolfgang [
                     }
                   ]
                 }
+                %{ end }%
+                %{if fields.enablePhysics.value then}%
                   physics Physics {
                     density -1
                     mass 0.319807
@@ -4149,10 +4311,12 @@ PROTO Wolfgang [
                       -7.409920e-08 -6.187510e-07 3.883250e-06
                     ]
                   }
+                %{ end }%
               }
             }
           ]
           name "l_hip_1"
+          %{if fields.enableBoundingObject.value then}%
           boundingObject Group {
             children [
               Transform {
@@ -4194,6 +4358,8 @@ PROTO Wolfgang [
               }
             ]
           }
+          %{ end }%
+          %{if fields.enablePhysics.value then}%
             physics Physics {
               density -1
               mass 0.068973
@@ -4203,6 +4369,7 @@ PROTO Wolfgang [
                 -2.444750e-14 3.067930e-15 -6.566880e-11
               ]
             }
+          %{ end }%
         }
       }
       DEF HeadPanJoint HingeJointWithBacklash {
@@ -4421,6 +4588,7 @@ PROTO Wolfgang [
                   }
                 ]
                 name "head"
+                %{if fields.enableBoundingObject.value then}%
                 boundingObject Group {
                   children [
                     Transform {
@@ -4538,6 +4706,8 @@ PROTO Wolfgang [
                     }
                   ]
                 }
+                %{ end }%
+                %{if fields.enablePhysics.value then}%
                   physics Physics {
                     density -1
                     mass 0.301358
@@ -4547,10 +4717,12 @@ PROTO Wolfgang [
                       -2.072630e-05 1.058260e-06 5.117220e-05
                     ]
                   }
+                %{ end }%
               }
             }
           ]
           name "neck"
+          %{if fields.enableBoundingObject.value then}%
           boundingObject Group {
             children [
               Transform {
@@ -4573,6 +4745,8 @@ PROTO Wolfgang [
               }
             ]
           }
+          %{ end }%
+          %{if fields.enablePhysics.value then}%
             physics Physics {
               density -1
               mass 0.148233
@@ -4582,10 +4756,12 @@ PROTO Wolfgang [
                 -5.287090e-07 4.956980e-06 -2.281580e-08
               ]
             }
+          %{ end }%
         }
       }
     ]
     name IS name
+    %{if fields.enableBoundingObject.value then}%
     boundingObject Group {
       children [
         Transform {
@@ -4797,6 +4973,8 @@ PROTO Wolfgang [
         }
       ]
     }
+    %{ end }%
+    %{if fields.enablePhysics.value then}%
       physics Physics {
         density -1
         mass 2.083900
@@ -4806,5 +4984,6 @@ PROTO Wolfgang [
           -6.801730e-05 -1.408270e-03 1.040740e-04
         ]
       }
+    %{ end }%
   }
 }

@@ -1,0 +1,13 @@
+#VRML_SIM R2025a utf8
+PROTO TestRobot [
+]
+{
+  Robot {
+    children [
+      Shape {
+        geometry Box { size 0.1 0.1 0.1 }
+      }
+    ]
+    name "test_robot"
+  }
+}

@@ -1,0 +1,8 @@
+.git
+.pixi
+.vscode
+build
+install
+log
+src
+**/target

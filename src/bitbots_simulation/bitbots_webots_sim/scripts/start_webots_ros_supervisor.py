@@ -13,7 +13,10 @@ class SupervisorNode:
     def __init__(self, simulator_port):
         self.node = Node("supervisor_node")
 
-        os.environ["WEBOTS_CONTROLLER_URL"] = f"ipc://{simulator_port}/supervisor_robot"
+        if "WEBOTS_HOST" in os.environ:
+            os.environ["WEBOTS_CONTROLLER_URL"] = f"tcp://{os.environ['WEBOTS_HOST']}:{simulator_port}/supervisor_robot"
+        else:
+            os.environ["WEBOTS_CONTROLLER_URL"] = f"ipc://{simulator_port}/supervisor_robot"
 
         self.supervisor_controller = SupervisorController(ros_active=True, ros_node=self.node)
         self.node.get_logger().info("started webots ros supervisor")

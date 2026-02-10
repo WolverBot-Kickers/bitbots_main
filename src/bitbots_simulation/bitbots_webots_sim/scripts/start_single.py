@@ -15,7 +15,10 @@ class RobotNode:
         self.node = Node("robot_node")
         self.void_controller = void_controller
 
-        os.environ["WEBOTS_CONTROLLER_URL"] = f"ipc://{simulator_port}/{robot_name}"
+        if "WEBOTS_HOST" in os.environ:
+            os.environ["WEBOTS_CONTROLLER_URL"] = f"tcp://{os.environ['WEBOTS_HOST']}:{simulator_port}/{robot_name}"
+        else:
+            os.environ["WEBOTS_CONTROLLER_URL"] = f"ipc://{simulator_port}/{robot_name}"
 
         if void_controller:
             self.node.get_logger().info("Starting void interface for " + robot_name)
