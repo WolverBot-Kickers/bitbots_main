@@ -1,0 +1,710 @@
+<robot name="maniskill">
+  
+  <link name="torso">
+    <inertial>
+      <origin xyz="-0.0561542 0.00104686 -0.00238612" rpy="0 0 0" />
+      <mass value="5.39548" />
+      <inertia ixx="0.0783373" ixy="3.49434e-05" ixz="-0.000273016" iyy="0.0540705" iyz="-1.21132e-05" izz="0.0329943" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="-0.06405 0.129381 0.105378" rpy="1.5708 3.12214e-08 -1.5708" />
+      <geometry>
+        <box size="0.0365497 0.0492657 0.026" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.06405 0.127106 0.080745" rpy="3.41792e-16 -3.12214e-08 1.5708" />
+      <geometry>
+        <mesh filename="package://assets/ax_12a.stl" />
+      </geometry>
+      <material name="ax_12a_material">
+        <color rgba="0.647059 0.647059 0.647059 1" />
+      </material>
+    </visual>
+    
+    <visual>
+      <origin xyz="-0.0193324 0.0599276 -0.00643811" rpy="-1.5708 6.92398e-23 1.5708" />
+      <geometry>
+        <mesh filename="package://assets/torso.stl" />
+      </geometry>
+      <material name="torso_material">
+        <color rgba="0.972549 0.529412 0.00392157 1" />
+      </material>
+    </visual>
+    
+    <collision>
+      <origin xyz="-0.06405 0.00158085 -0.147555" rpy="-3.14159 -3.12214e-08 1.5708" />
+      <geometry>
+        <box size="0.2 0.0527198 0.055" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.00428937 -0.00887646 -0.00177007" rpy="1.20886e-14 -3.12214e-08 1.5708" />
+      <geometry>
+        <mesh filename="package://assets/hip_base.stl" />
+      </geometry>
+      <material name="hip_base_material">
+        <color rgba="0.647059 0.647059 0.647059 1" />
+      </material>
+    </visual>
+    
+    <collision>
+      <origin xyz="-0.06405 -0.126219 0.105378" rpy="1.5708 -3.12214e-08 1.5708" />
+      <geometry>
+        <box size="0.0365497 0.0492657 0.026" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.06405 -0.123944 0.080745" rpy="4.46397e-16 3.12214e-08 -1.5708" />
+      <geometry>
+        <mesh filename="package://assets/ax_12a.stl" />
+      </geometry>
+      <material name="ax_12a_2_material">
+        <color rgba="0.647059 0.647059 0.647059 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="part_1">
+    <visual>
+      <origin xyz="-0.024127 0.011 1.11022e-16" rpy="-3.14159 1.5708 0" />
+      <geometry>
+        <mesh filename="package://assets/part_1.stl" />
+      </geometry>
+      <material name="part_1_material">
+        <color rgba="0.796078 0.823529 0.937255 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="left_arm">
+    <inertial>
+      <origin xyz="-8.35486e-05 0.0651624 -0.0172965" rpy="0 0 0" />
+      <mass value="0.121563" />
+      <inertia ixx="0.000498083" ixy="4.92727e-07" ixz="1.93422e-08" iyy="4.3802e-05" iyz="-1.76007e-05" izz="0.00047449" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="-0.000447805 0.0912682 -0.0198" rpy="3.14159 -4.05767e-18 1.89104e-24" />
+      <geometry>
+        <box size="0.029846 0.205415 0.048" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.170106 0.100245 -0.085723" rpy="1.5708 4.07184e-16 1.89104e-24" />
+      <geometry>
+        <mesh filename="package://assets/left_arm.stl" />
+      </geometry>
+      <material name="left_arm_material">
+        <color rgba="0.231373 0.380392 0.705882 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="left_hand">
+    <inertial>
+      <origin xyz="0.00543973 0.0679354 -0.0188089" rpy="0 0 0" />
+      <mass value="0.146964" />
+      <inertia ixx="0.000445898" ixy="-3.96195e-05" ixz="-2.40495e-07" iyy="4.34997e-05" iyz="-1.80432e-06" izz="0.000441739" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="0.0171885 0.139879 -0.0188" rpy="-3.14159 -4.83803e-16 -1.25989e-24" />
+      <geometry>
+        <cylinder length="0.041" radius="0.00675797" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-0.00391855 0.162146 -0.0188" rpy="-3.14159 -4.83803e-16 -1.25989e-24" />
+      <geometry>
+        <cylinder length="0.041" radius="0.00469911" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.0236415 0.11217 -0.0188" rpy="-3.14159 -4.83803e-16 -1.25989e-24" />
+      <geometry>
+        <cylinder length="0.041" radius="0.00656087" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-5.53981e-05 0.0565068 -0.0188" rpy="-3.14159 -4.83803e-16 -1.25989e-24" />
+      <geometry>
+        <box size="0.0319403 0.0740559 0.041" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-2.55481e-05 0.00434623 -0.0188" rpy="-3.14159 -4.83803e-16 -1.25989e-24" />
+      <geometry>
+        <box size="0.032 0.0302663 0.041" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.176776 -0.0632262 -0.0944015" rpy="1.5708 4.10877e-16 -1.25989e-24" />
+      <geometry>
+        <mesh filename="package://assets/left_hand.stl" />
+      </geometry>
+      <material name="left_hand_material">
+        <color rgba="0.768627 0.886275 0.952941 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="arm_L_3" type="revolute">
+    <origin xyz="-0.000234367 0.182 0.0012" rpy="-1.04777e-15 -2.6737e-16 -8.32668e-17" />
+    <parent link="left_arm" />
+    <child link="left_hand" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-1.5708" upper="1.5708" />
+  </joint>
+  
+  <joint name="arm_L_2" type="revolute">
+    <origin xyz="0.020127 0.019 -0.022" rpy="-3.41096e-16 1.5708 0" />
+    <parent link="part_1" />
+    <child link="left_arm" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-3.14159" upper="0.174533" />
+  </joint>
+  
+  <joint name="arm_L_1" type="revolute">
+    <origin xyz="-0.06405 -0.144944 0.119245" rpy="-1.5708 -4.46397e-16 -9.29758e-17" />
+    <parent link="torso" />
+    <child link="part_1" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-2.26893" upper="2.26893" />
+  </joint>
+  
+  <link name="part_1_2">
+    <visual>
+      <origin xyz="-0.024127 0.011 -3.60822e-16" rpy="-3.14159 1.5708 0" />
+      <geometry>
+        <mesh filename="package://assets/part_1__2.stl" />
+      </geometry>
+      <material name="part_1_2_material">
+        <color rgba="0.796078 0.823529 0.937255 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="right_arm">
+    <inertial>
+      <origin xyz="-0.00016312 0.0651622 -0.0172965" rpy="0 0 0" />
+      <mass value="0.121563" />
+      <inertia ixx="0.000498082" ixy="1.04746e-06" ixz="4.0835e-08" iyy="4.38038e-05" iyz="-1.76007e-05" izz="0.00047449" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="-4.45545e-05 0.0911413 -0.0198" rpy="-3.14159 -1.80488e-16 -6.30187e-25" />
+      <geometry>
+        <box size="0.0311265 0.205631 0.048" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.166944 0.100245 -0.085723" rpy="1.5708 4.21559e-16 -6.30187e-25" />
+      <geometry>
+        <mesh filename="package://assets/right_arm.stl" />
+      </geometry>
+      <material name="right_arm_material">
+        <color rgba="0.231373 0.380392 0.705882 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="right_hand">
+    <inertial>
+      <origin xyz="-0.00569762 0.0679143 -0.0192005" rpy="0 0 0" />
+      <mass value="0.144242" />
+      <inertia ixx="0.000437322" ixy="4.03841e-05" ixz="8.6853e-09" iyy="4.29776e-05" iyz="-1.10325e-07" izz="0.000433558" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="-0.0148905 0.14456 -0.0189" rpy="3.14159 1.65833e-16 2.20614e-24" />
+      <geometry>
+        <cylinder length="0.041" radius="0.00661638" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.00330245 0.16216 -0.0189" rpy="3.14159 1.65833e-16 2.20614e-24" />
+      <geometry>
+        <cylinder length="0.041" radius="0.005" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-1.87992e-05 0.0397203 -0.0189" rpy="-3.14159 -1.65833e-16 -3.14159" />
+      <geometry>
+        <box size="0.0286525 0.102703 0.041" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-0.0247405 0.104969 -0.0189" rpy="3.14159 1.65833e-16 2.20614e-24" />
+      <geometry>
+        <cylinder length="0.041" radius="0.00725035" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.167604 -0.0811283 -0.086117" rpy="1.5708 7.33932e-16 2.20614e-24" />
+      <geometry>
+        <mesh filename="package://assets/right_hand.stl" />
+      </geometry>
+      <material name="right_hand_material">
+        <color rgba="0.498039 0.498039 0.498039 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="arm_R_3" type="revolute">
+    <origin xyz="-0.000456612 0.181999 0.0012" rpy="1.4988e-15 3.30449e-16 -7.24763e-24" />
+    <parent link="right_arm" />
+    <child link="right_hand" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-1.5708" upper="1.5708" />
+  </joint>
+  
+  <joint name="arm_R_2" type="revolute">
+    <origin xyz="-0.020127 0.019 -0.022" rpy="-1.17756e-14 -1.5708 0" />
+    <parent link="part_1_2" />
+    <child link="right_arm" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-0.174533" upper="3.14159" />
+  </joint>
+  
+  <joint name="arm_R_1" type="revolute">
+    <origin xyz="-0.06405 0.148106 0.119245" rpy="-1.5708 -3.41792e-16 -3.14159" />
+    <parent link="torso" />
+    <child link="part_1_2" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-2.35619" upper="2.35619" />
+  </joint>
+  
+  <link name="hip_right_z">
+    <inertial>
+      <origin xyz="-7.99756e-12 0.00333883 -0.0239447" rpy="0 0 0" />
+      <mass value="0.0517715" />
+      <inertia ixx="4.05325e-05" ixy="2.72458e-14" ixz="-6.10376e-15" iyy="1.69726e-05" iyz="1.80678e-06" izz="3.52802e-05" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="0.0002596 0.0545 -0.0252935" rpy="-1.5708 8.94302e-15 6.56419e-14" />
+      <geometry>
+        <box size="0.0396808 0.0459402 0.034" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-5e-08 0.0545 -0.0511941" rpy="-1.5708 8.94302e-15 6.56419e-14" />
+      <geometry>
+        <box size="0.0311905 0.00586106 0.034" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-3.01691e-15 0.0545 0.00123175" rpy="-1.5708 8.44754e-14 6.56419e-14" />
+      <geometry>
+        <box size="0.0317858 0.0071103 0.034" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-3.13638e-15 0.0545 -0.042" rpy="-3.14159 -8.94302e-15 -3.14159" />
+      <geometry>
+        <mesh filename="package://assets/rx_64.stl" />
+      </geometry>
+      <material name="rx_64_material">
+        <color rgba="0.647059 0.647059 0.647059 1" />
+      </material>
+    </visual>
+    
+    <visual>
+      <origin xyz="0.0629729 -0.06605 0.16568" rpy="-1.78416e-14 8.94302e-15 -1.98536e-17" />
+      <geometry>
+        <mesh filename="package://assets/hip_right_z.stl" />
+      </geometry>
+      <material name="hip_right_z_material">
+        <color rgba="0.615686 0.811765 0.929412 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="hip_right_x">
+    <visual>
+      <origin xyz="0.0629729 0.20768 0.04375" rpy="-1.5708 -6.58975e-14 -1.57497e-24" />
+      <geometry>
+        <mesh filename="package://assets/hip_right_x.stl" />
+      </geometry>
+      <material name="hip_right_x_material">
+        <color rgba="0.615686 0.811765 0.929412 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="right_thigh">
+    <inertial>
+      <origin xyz="-0.00035952 0.0743246 0.0272736" rpy="0 0 0" />
+      <mass value="0.596928" />
+      <inertia ixx="0.00167777" ixy="4.30635e-06" ixz="1.0631e-06" iyy="0.000644856" iyz="1.8153e-05" izz="0.00118307" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="-0.000390129 0.0723573 0.00509996" rpy="1.3878e-16 -1.24142e-17 3.14159" />
+      <geometry>
+        <box size="0.0392729 0.134878 0.058" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="7.0271e-05 -0.00403403 0.00509996" rpy="1.3878e-16 -1.24142e-17 3.14159" />
+      <geometry>
+        <box size="0.0174297 0.0179047 0.058" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-0.000855229 0.147373 0.00509996" rpy="1.3878e-16 -1.24142e-17 3.14159" />
+      <geometry>
+        <box size="0.0224243 0.0224407 0.058" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.0874897 -0.266468 -0.0444235" rpy="1.5708 1.5708 0" />
+      <geometry>
+        <mesh filename="package://assets/right_thigh.stl" />
+      </geometry>
+      <material name="right_thigh_material">
+        <color rgba="0.647059 0.647059 0.647059 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="right_shin">
+    <visual>
+      <origin xyz="-0.169305 0.224493 -0.0769756" rpy="-2.89399 1.5708 0" />
+      <geometry>
+        <mesh filename="package://assets/right_shin.stl" />
+      </geometry>
+      <material name="right_shin_material">
+        <color rgba="0.615686 0.811765 0.929412 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="60645k191_ball_joint_rod_end">
+    <visual>
+      <origin xyz="0 -0.017 1.38778e-17" rpy="5.09334e-25 -4.57983e-24 -4.97562e-17" />
+      <geometry>
+        <mesh filename="package://assets/60645k191_ball_joint_rod_end.stl" />
+      </geometry>
+      <material name="60645k191_ball_joint_rod_end_material">
+        <color rgba="0.980392 0.713725 0.00392157 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="right_foot">
+    <inertial>
+      <origin xyz="0.000534411 0.0145503 0.000278263" rpy="0 0 0" />
+      <mass value="0.132264" />
+      <inertia ixx="0.000113317" ixy="-2.31346e-07" ixz="-7.02732e-09" iyy="0.000147088" iyz="-2.05125e-06" izz="4.35301e-05" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="0.000641019 0.017 0.0524861" rpy="1.5708 -0.00278882 3.14159" />
+      <geometry>
+        <box size="0.0399998 0.0101394 0.01" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.000655073 0.017 -0.00250004" rpy="1.5708 -0.00278882 3.14159" />
+      <geometry>
+        <box size="0.0602786 0.0998323 0.01" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.000655 0.022 0.00170513" rpy="1.5708 -0.00278882 3.14159" />
+      <geometry>
+        <mesh filename="package://assets/right_foot.stl" />
+      </geometry>
+      <material name="right_foot_material">
+        <color rgba="0.972549 0.529412 0.00392157 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="right_foot_eversion" type="revolute">
+    <origin xyz="-5.55112e-17 5.55112e-17 0" rpy="2.69482e-17 1.5708 0" />
+    <parent link="60645k191_ball_joint_rod_end" />
+    <child link="right_foot" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-0.523599" upper="0.523599" />
+  </joint>
+  
+  <joint name="right_foot_flexion" type="revolute">
+    <origin xyz="0.120398 -0.151264 -0.0049" rpy="3.14159 9.62969e-15 7.57809e-08" />
+    <parent link="right_shin" />
+    <child link="60645k191_ball_joint_rod_end" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-1.22173" upper="7.10543e-15" />
+  </joint>
+  
+  <joint name="right_shin_extension" type="revolute">
+    <origin xyz="-0.000786118 0.145714 0.0101" rpy="-6.6546e-15 -1.04807e-15 1.74533" />
+    <parent link="right_thigh" />
+    <child link="right_shin" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-1.0472" upper="1.5708" />
+  </joint>
+  
+  <joint name="right_leg_raise" type="revolute">
+    <origin xyz="0.0051 -0.035 -0.0249827" rpy="-3.14159 1.5708 0" />
+    <parent link="hip_right_x" />
+    <child link="right_thigh" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-1.5708" upper="1.5708" />
+  </joint>
+  
+  <joint name="hip_right_x" type="revolute">
+    <origin xyz="1.59595e-15 -0.0225 -0.042" rpy="1.5708 7.99933e-15 6.43788e-14" />
+    <parent link="hip_right_z" />
+    <child link="hip_right_x" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-0.785398" upper="0.523599" />
+  </joint>
+  
+  <joint name="hip_right_z" type="revolute">
+    <origin xyz="-0.06405 -0.0629866 -0.166455" rpy="2.81209e-14 -3.12214e-08 1.5708" />
+    <parent link="torso" />
+    <child link="hip_right_z" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-0.785398" upper="0.785398" />
+  </joint>
+  
+  <link name="hip_left_z">
+    <inertial>
+      <origin xyz="-7.99732e-12 0.00333883 -0.0239447" rpy="0 0 0" />
+      <mass value="0.0517715" />
+      <inertia ixx="4.05325e-05" ixy="2.72458e-14" ixz="-6.10377e-15" iyy="1.69726e-05" iyz="1.80678e-06" izz="3.52802e-05" />
+    </inertial>
+    
+    <visual>
+      <origin xyz="-0.0258675 -0.0738259 0.175355" rpy="-1.78215e-14 9.2103e-15 -2.41897e-16" />
+      <geometry>
+        <mesh filename="package://assets/hip_left_z.stl" />
+      </geometry>
+      <material name="hip_left_z_material">
+        <color rgba="0.615686 0.811765 0.929412 1" />
+      </material>
+    </visual>
+    
+    <collision>
+      <origin xyz="0.0002596 0.0545 -0.0252935" rpy="-1.5708 9.2103e-15 7.80843e-14" />
+      <geometry>
+        <box size="0.0396808 0.0459402 0.034" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-5e-08 0.0545 -0.0511941" rpy="-1.5708 9.2103e-15 7.80843e-14" />
+      <geometry>
+        <box size="0.0311905 0.00586106 0.034" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-3.96292e-15 0.0545 0.00123175" rpy="-1.5708 8.47427e-14 7.80843e-14" />
+      <geometry>
+        <box size="0.0317858 0.0071103 0.034" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-4.09395e-15 0.0545 -0.042" rpy="3.14159 -9.2103e-15 -3.14159" />
+      <geometry>
+        <mesh filename="package://assets/rx_64.stl" />
+      </geometry>
+      <material name="rx_64_2_material">
+        <color rgba="0.647059 0.647059 0.647059 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="hip_left_x">
+    <visual>
+      <origin xyz="-0.0662271 0.20848 0.04375" rpy="-1.5708 -8.02084e-14 1.26083e-24" />
+      <geometry>
+        <mesh filename="package://assets/hip_left_x.stl" />
+      </geometry>
+      <material name="hip_left_x_material">
+        <color rgba="0.615686 0.811765 0.929412 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="left_thigh">
+    <inertial>
+      <origin xyz="-4.14605e-05 -0.0743169 0.0272736" rpy="0 0 0" />
+      <mass value="0.606907" />
+      <inertia ixx="0.0017062" ixy="-1.28756e-06" ixz="-1.18037e-06" iyy="0.000655619" iyz="-1.85746e-05" izz="0.00120322" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="-4.61032e-08 -0.0698038 0.00499996" rpy="3.14159 -1.47072e-14 3.14159" />
+      <geometry>
+        <box size="0.04 0.129557 0.058" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="5.38968e-08 -0.146559 0.00499996" rpy="3.14159 -1.47072e-14 3.14159" />
+      <geometry>
+        <box size="0.0224246 0.0239527 0.058" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="3.89682e-09 0.00400383 0.00499996" rpy="-3.14159 1.47072e-14 -2.17923e-30" />
+      <geometry>
+        <box size="0.0174299 0.0180598 0.058" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.0623892 0.234965 -0.0778536" rpy="-1.5708 -1.5708 0" />
+      <geometry>
+        <mesh filename="package://assets/left_thigh.stl" />
+      </geometry>
+      <material name="left_thigh_material">
+        <color rgba="0.647059 0.647059 0.647059 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="left_shin">
+    <visual>
+      <origin xyz="-0.0595201 0.358826 -0.0782345" rpy="-1.5708 -1.5708 0" />
+      <geometry>
+        <mesh filename="package://assets/left_shin.stl" />
+      </geometry>
+      <material name="left_shin_material">
+        <color rgba="0.615686 0.811765 0.929412 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="60645k191_ball_joint_rod_end_2">
+    <visual>
+      <origin xyz="0 -0.017 -1.38778e-17" rpy="1.08324e-24 2.34721e-24 5.88705e-18" />
+      <geometry>
+        <mesh filename="package://assets/60645k191_ball_joint_rod_end.stl" />
+      </geometry>
+      <material name="60645k191_ball_joint_rod_end_2_material">
+        <color rgba="0.980392 0.713725 0.00392157 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="left_foot">
+    <inertial>
+      <origin xyz="4.37944e-05 -0.0145503 0.00027826" rpy="0 0 0" />
+      <mass value="0.132264" />
+      <inertia ixx="0.000113317" ixy="2.14006e-07" ixz="-4.11107e-09" iyy="0.00014708" iyz="2.05126e-06" izz="4.35224e-05" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="0.000155057 -0.0170004 -0.00249978" rpy="1.5708 -0.0161288 1.65657e-08" />
+      <geometry>
+        <box size="0.061605 0.0990193 0.01" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.000237009 -0.0170004 0.0524204" rpy="1.5708 -0.0161288 1.65657e-08" />
+      <geometry>
+        <box size="0.0399948 0.0108051 0.01" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.0771082 0.49831 -0.0549918" rpy="2.58574 -0.016031 0.110196" />
+      <geometry>
+        <mesh filename="package://assets/left_foot.stl" />
+      </geometry>
+      <material name="left_foot_material">
+        <color rgba="0.972549 0.529412 0.00392157 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="left_foot_eversion" type="revolute">
+    <origin xyz="1.11022e-16 5.55112e-17 -1.38778e-17" rpy="-3.14159 1.5708 0" />
+    <parent link="60645k191_ball_joint_rod_end_2" />
+    <child link="left_foot" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-0.523599" upper="0.523599" />
+  </joint>
+  
+  <joint name="left_foot_flexion" type="revolute">
+    <origin xyz="0.117972 -0.153164 -0.0051" rpy="-3.14159 -5.21728e-15 1.39626" />
+    <parent link="left_shin" />
+    <child link="60645k191_ball_joint_rod_end_2" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="0" upper="1.22173" />
+  </joint>
+  
+  <joint name="left_shin_extension" type="revolute">
+    <origin xyz="1.84575e-15 -0.145716 0.0101" rpy="-6.87083e-15 8.51081e-17 -4.77077e-16" />
+    <parent link="left_thigh" />
+    <child link="left_shin" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-1.0472" upper="1.5708" />
+  </joint>
+  
+  <joint name="left_leg_raise" type="revolute">
+    <origin xyz="-0.0051 -0.035 -0.0249827" rpy="-1.26083e-24 1.5708 0" />
+    <parent link="hip_left_x" />
+    <child link="left_thigh" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-1.5708" upper="1.5708" />
+  </joint>
+  
+  <joint name="hip_left_x" type="revolute">
+    <origin xyz="2.60902e-15 -0.0225 -0.042" rpy="1.5708 7.76701e-15 8.12988e-14" />
+    <parent link="hip_left_z" />
+    <child link="hip_left_x" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-0.523599" upper="0.785398" />
+  </joint>
+  
+  <joint name="hip_left_z" type="revolute">
+    <origin xyz="-0.06405 0.0661808 -0.166455" rpy="1.20886e-14 -3.12214e-08 1.5708" />
+    <parent link="torso" />
+    <child link="hip_left_z" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-0.785398" upper="0.785398" />
+  </joint>
+  
+  <link name="head_bottom">
+    <visual>
+      <origin xyz="-0.00985322 -0.0403881 0.1509" rpy="-3.14159 -1.68146e-09 2.42973e-26" />
+      <geometry>
+        <mesh filename="package://assets/head_bottom.stl" />
+      </geometry>
+      <material name="head_bottom_material">
+        <color rgba="0.615686 0.811765 0.929412 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <link name="head_top">
+    <visual>
+      <origin xyz="0.0344254 0.174185 -0.0300032" rpy="1.1462 -1.5708 0" />
+      <geometry>
+        <mesh filename="package://assets/head_top.stl" />
+      </geometry>
+      <material name="head_top_material">
+        <color rgba="0.231373 0.380392 0.705882 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="head_nod" type="revolute">
+    <origin xyz="0.02165 -8.05199e-11 -0.022" rpy="1.5708 -0.424601 1.5708" />
+    <parent link="head_bottom" />
+    <child link="head_top" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-1.5708" upper="1.0472" />
+  </joint>
+  
+  <joint name="head_turn" type="revolute">
+    <origin xyz="-0.05035 0.0015808 0.160995" rpy="3.14159 -3.12214e-08 1.5708" />
+    <parent link="torso" />
+    <child link="head_bottom" />
+    <axis xyz="0 0 1" />
+    <limit effort="10" velocity="10" lower="-1.5708" upper="1.5708" />
+  </joint>
+</robot>

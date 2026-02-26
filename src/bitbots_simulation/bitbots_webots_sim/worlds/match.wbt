@@ -6,12 +6,11 @@ EXTERNPROTO "../protos/RobocupTexturedSoccerBall.proto"
 EXTERNPROTO "../protos/lighting/RoboCupMainLight.proto"
 EXTERNPROTO "../protos/lighting/RoboCupOffLight.proto"
 EXTERNPROTO "../protos/lighting/RoboCupTopLight.proto"
-
 EXTERNPROTO "../protos/robots/Wolfgang/Wolfgang.proto"
 EXTERNPROTO "../protos/hl_supervisor/hl_supervisor.proto"
 
 WorldInfo {
-    info [
+  info [
     "Description: Bit-Bots Robocup Virtual Humanoid League (kid size) match 2 vs 2"
     "Version 0.1"
   ]
@@ -45,72 +44,58 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.13074775069234934 0.15392461377846517 -0.9793938119888453 1.674637090314644
-  position 0.0918799331514291 15.742602735510587 6.669799372347793
+  orientation 0.03572567983103118 0.144305526877441 -0.9888880577260678 1.0078840922118861
+  position -7.692366321161912 9.44143794461133 3.063415647187827
 }
-
 DEF robocup_background RoboCupBackground {
-  texture "stadium_dry"
-  luminosity 1.0
 }
-
 DEF robocup_main_light RoboCupMainLight {
-  texture "stadium_dry"
-  luminosity 1.0
 }
-
 DEF robocup_off_light RoboCupOffLight {
-  texture "stadium_dry"
-  luminosity 1.0
 }
-
 DEF robocup_top_light RoboCupTopLight {
-  texture "stadium_dry"
-  luminosity 1.0
 }
-
 DEF robocup_soccer_field RobocupSoccerField {
   size "kid"
 }
-
 DEF BALL RobocupTexturedSoccerBall {
-  translation 0.0 0.0 0.07
-  size 1
-  texture "telstar"
+  translation 0 0 0.07
 }
-
 DEF amy Wolfgang {
-  translation -1.0 3.14 0.4274
-  rotation 0.0 0.0 -1.0 1.5869763401625028
+  translation -1 3.14 1.9074
+  rotation 0 0 -1 1.5869763401625028
   name "amy"
   controller "<extern>"
-  teamColor 1 0 0
-  jerseyTexture ["Wolfgang_textures/number_1.png"]
 }
-DEF rory Wolfgang {
-  translation -1.0 -3.14 0.4274
-  rotation 0.0 0.0 1.0 1.5869763401625028
-  name "rory"
-  controller "<extern>"
-  teamColor 1 0 0
-  jerseyTexture ["Wolfgang_textures/number_2.png"]
-}
-DEF jack Wolfgang {
-  translation -3.0 3.14 0.4274
-  rotation 0.0 0.0 -1.0 1.5869763401625028
-  name "jack"
-  controller "<extern>"
-  teamColor 0 0 1
-  jerseyTexture ["Wolfgang_textures/number_3.png"]
-}
-DEF donna Wolfgang {
-  translation -3.0 -3.14 0.4274
-  rotation 0.0 0.0 1.0 1.5869763401625028
-  name "donna"
-  controller "<extern>"
-  teamColor 0 0 1
-  jerseyTexture ["Wolfgang_textures/number_4.png"]
-}
+# DEF rory Wolfgang {
+#   translation -1 -3.14 0.4274
+#   rotation 0 0 1 1.5869763401625028
+#   name "rory"
+#   controller "<extern>"
+#   jerseyTexture [
+#     "../protos/robots/Wolfgang/Wolfgang_textures/number_2.png"
+#   ]
+# }
+# DEF jack Wolfgang {
+#   translation -3 3.14 0.4274
+#   rotation 0 0 -1 1.5869763401625028
+#   name "jack"
+#   controller "<extern>"
+#   teamColor 0 0 1
+#   jerseyTexture [
+#     "../protos/robots/Wolfgang/Wolfgang_textures/number_3.png"
+#   ]
+# }
+# DEF donna Wolfgang {
+#   translation 1.42947 -3.0683 3.3374
+#   rotation 0 0 1 1.5869763401625028
+#   name "donna"
+#   controller "<extern>"
+#   teamColor 0 0 1
+#   jerseyTexture [
+#     "../protos/robots/Wolfgang/Wolfgang_textures/number_4.png"
+#   ]
+# }
 DEF supervisor_robot hl_supervisor {
   name "supervisor_robot"
   controller "<extern>"
