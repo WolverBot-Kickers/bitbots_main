@@ -88,6 +88,8 @@ rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}
 
 target_link_libraries(WalkNode "${cpp_typesupport_target}"
                       bitbots_quintic_walk_parameters)
+target_compile_options(WalkNode PRIVATE -ffat-lto-objects)
+target_link_options(WalkNode PRIVATE -ffat-lto-objects)
 
 # create the lib
 pybind11_add_module(libpy_quintic_walk SHARED src/walk_pywrapper.cpp ${SOURCES})

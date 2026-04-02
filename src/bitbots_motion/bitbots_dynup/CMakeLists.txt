@@ -104,6 +104,8 @@ rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}
 
 target_link_libraries(DynupNode "${cpp_typesupport_target}" rclcpp::rclcpp
                       dynup_parameters)
+target_compile_options(DynupNode PRIVATE -ffat-lto-objects)
+target_link_options(DynupNode PRIVATE -ffat-lto-objects)
 # create the lib
 pybind11_add_module(libpy_dynup SHARED src/dynup_pywrapper.cpp ${SOURCES})
 ament_target_dependencies(
