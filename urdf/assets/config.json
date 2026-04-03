@@ -1,0 +1,8 @@
+{
+    "documentId": "931c54b250c6b1059816b20b",
+    "output_format": "urdf",
+    "assemblyName": "Full Assem No Linkages",
+    "use_scads": true,
+    "merge_stls": true,
+    "collisions_as_visual": true
+}

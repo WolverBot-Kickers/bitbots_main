@@ -481,7 +481,7 @@ class Simulation:
                 a_key = ord("a")
                 s_key = ord("s")
                 d_key = ord("d")
-                keys = p.get_keyboardEvents()
+                keys = p.getKeyboardEvents()
                 if r_key in keys and keys[r_key] & p.KEY_WAS_TRIGGERED:
                     self.reset()
                 if space_key in keys and keys[space_key] & p.KEY_WAS_TRIGGERED:

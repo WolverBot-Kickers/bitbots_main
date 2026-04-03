@@ -2,18 +2,6 @@
 <!-- Generated using onshape-to-robot -->
 <!-- Onshape document_id: 931c54b250c6b1059816b20b -->
 <robot name="maniskill">
-  <link name="base_link">
-    <inertial>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <mass value="0.0001"/>
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-    </inertial>
-  </link>
-  <joint name="base_link_to_base" type="fixed">
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-    <parent link="base_link"/>
-    <child link="torso"/>
-  </joint>
   <!-- Link torso -->
   <link name="torso">
     <inertial>
@@ -31,7 +19,7 @@
     <visual>
       <origin xyz="-0.06405 0.127106 0.080745" rpy="3.41792e-16 -3.12214e-08 1.5708"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/ax_12a.stl"/>
+        <mesh filename="package://assets/ax_12a.stl"/>
       </geometry>
       <material name="ax_12a_material">
         <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -41,7 +29,7 @@
     <visual>
       <origin xyz="-0.0193324 0.0599276 -0.00643811" rpy="-1.5708 6.92398e-23 1.5708"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/torso.stl"/>
+        <mesh filename="package://assets/torso.stl"/>
       </geometry>
       <material name="torso_material">
         <color rgba="0.972549 0.529412 0.00392157 1"/>
@@ -57,7 +45,7 @@
     <visual>
       <origin xyz="0.00428937 -0.00887646 -0.00177007" rpy="1.20886e-14 -3.12214e-08 1.5708"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/hip_base.stl"/>
+        <mesh filename="package://assets/hip_base.stl"/>
       </geometry>
       <material name="hip_base_material">
         <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -73,7 +61,7 @@
     <visual>
       <origin xyz="-0.06405 -0.123944 0.080745" rpy="4.46397e-16 3.12214e-08 -1.5708"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/ax_12a.stl"/>
+        <mesh filename="package://assets/ax_12a.stl"/>
       </geometry>
       <material name="ax_12a_2_material">
         <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -91,7 +79,7 @@
     <visual>
       <origin xyz="-0.024127 0.011 1.11022e-16" rpy="-3.14159 1.5708 0"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/part_1.stl"/>
+        <mesh filename="package://assets/part_1.stl"/>
       </geometry>
       <material name="part_1_material">
         <color rgba="0.796078 0.823529 0.937255 1"/>
@@ -115,7 +103,7 @@
     <visual>
       <origin xyz="-0.170106 0.100245 -0.085723" rpy="1.5708 4.07184e-16 1.89104e-24"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/left_arm.stl"/>
+        <mesh filename="package://assets/left_arm.stl"/>
       </geometry>
       <material name="left_arm_material">
         <color rgba="0.231373 0.380392 0.705882 1"/>
@@ -163,7 +151,7 @@
     <visual>
       <origin xyz="-0.176776 -0.0632262 -0.0944015" rpy="1.5708 4.10877e-16 -1.25989e-24"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/left_hand.stl"/>
+        <mesh filename="package://assets/left_hand.stl"/>
       </geometry>
       <material name="left_hand_material">
         <color rgba="0.768627 0.886275 0.952941 1"/>
@@ -205,7 +193,7 @@
     <visual>
       <origin xyz="-0.024127 0.011 2.77556e-17" rpy="-3.14159 1.5708 0"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/part_1__2.stl"/>
+        <mesh filename="package://assets/part_1__2.stl"/>
       </geometry>
       <material name="part_1_2_material">
         <color rgba="0.796078 0.823529 0.937255 1"/>
@@ -229,7 +217,7 @@
     <visual>
       <origin xyz="0.166944 0.100245 -0.085723" rpy="1.5708 4.21559e-16 -6.30187e-25"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/right_arm.stl"/>
+        <mesh filename="package://assets/right_arm.stl"/>
       </geometry>
       <material name="right_arm_material">
         <color rgba="0.231373 0.380392 0.705882 1"/>
@@ -271,7 +259,7 @@
     <visual>
       <origin xyz="0.167604 -0.0811283 -0.086117" rpy="1.5708 7.33932e-16 -1.57304e-24"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/right_hand.stl"/>
+        <mesh filename="package://assets/right_hand.stl"/>
       </geometry>
       <material name="right_hand_material">
         <color rgba="0.498039 0.498039 0.498039 1"/>
@@ -331,7 +319,7 @@
     <visual>
       <origin xyz="-3.15026e-15 0.0545 -0.042" rpy="3.14159 -9.31899e-15 -3.14159"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/rx_64.stl"/>
+        <mesh filename="package://assets/rx_64.stl"/>
       </geometry>
       <material name="rx_64_material">
         <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -341,7 +329,7 @@
     <visual>
       <origin xyz="0.0629729 -0.06605 0.16568" rpy="-1.71003e-14 9.31899e-15 6.34593e-17"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/hip_right_z.stl"/>
+        <mesh filename="package://assets/hip_right_z.stl"/>
       </geometry>
       <material name="hip_right_z_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -359,7 +347,7 @@
     <visual>
       <origin xyz="0.0629729 0.20768 0.04375" rpy="-1.5708 -6.58975e-14 2.2076e-24"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/hip_right_x.stl"/>
+        <mesh filename="package://assets/hip_right_x.stl"/>
       </geometry>
       <material name="hip_right_x_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -395,7 +383,7 @@
     <visual>
       <origin xyz="-0.0874897 -0.266468 -0.0444235" rpy="1.5708 1.5708 0"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/right_thigh.stl"/>
+        <mesh filename="package://assets/right_thigh.stl"/>
       </geometry>
       <material name="right_thigh_material">
         <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -413,7 +401,7 @@
     <visual>
       <origin xyz="-0.278458 0.0390234 -0.0769756" rpy="2.60379 1.5708 0"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/right_shin.stl"/>
+        <mesh filename="package://assets/right_shin.stl"/>
       </geometry>
       <material name="right_shin_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -431,7 +419,7 @@
     <visual>
       <origin xyz="-2.9924e-17 -0.017 -1.38778e-17" rpy="2.04484e-15 4.75515e-15 2.74933e-16"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/ball_joint_rod_end.stl"/>
+        <mesh filename="package://assets/ball_joint_rod_end.stl"/>
       </geometry>
       <material name="ball_joint_rod_end_material">
         <color rgba="0.980392 0.713725 0.00392157 1"/>
@@ -461,7 +449,7 @@
     <visual>
       <origin xyz="0.000655 0.022 0.00170513" rpy="1.5708 -0.00278882 3.14159"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/right_foot.stl"/>
+        <mesh filename="package://assets/right_foot.stl"/>
       </geometry>
       <material name="right_foot_material">
         <color rgba="0.972549 0.529412 0.00392157 1"/>
@@ -527,7 +515,7 @@
     <visual>
       <origin xyz="-0.0258675 -0.0738259 0.175355" rpy="-1.78215e-14 9.2103e-15 -2.41897e-16"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/hip_left_z.stl"/>
+        <mesh filename="package://assets/hip_left_z.stl"/>
       </geometry>
       <material name="hip_left_z_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -555,7 +543,7 @@
     <visual>
       <origin xyz="-4.09395e-15 0.0545 -0.042" rpy="3.14159 -9.2103e-15 -3.14159"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/rx_64.stl"/>
+        <mesh filename="package://assets/rx_64.stl"/>
       </geometry>
       <material name="rx_64_2_material">
         <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -573,7 +561,7 @@
     <visual>
       <origin xyz="-0.0662271 0.20848 0.04375" rpy="-1.5708 -8.02084e-14 1.26083e-24"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/hip_left_x.stl"/>
+        <mesh filename="package://assets/hip_left_x.stl"/>
       </geometry>
       <material name="hip_left_x_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -609,7 +597,7 @@
     <visual>
       <origin xyz="-0.0623892 0.234965 -0.0778536" rpy="-1.5708 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/left_thigh.stl"/>
+        <mesh filename="package://assets/left_thigh.stl"/>
       </geometry>
       <material name="left_thigh_material">
         <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -627,7 +615,7 @@
     <visual>
       <origin xyz="0.191154 0.30945 -0.0782345" rpy="-2.28852 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/left_shin.stl"/>
+        <mesh filename="package://assets/left_shin.stl"/>
       </geometry>
       <material name="left_shin_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -645,7 +633,7 @@
     <visual>
       <origin xyz="-0.00295202 0.0167417 0" rpy="3.14159 3.57739e-16 0.174533"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/ball_joint_rod_end.stl"/>
+        <mesh filename="package://assets/ball_joint_rod_end.stl"/>
       </geometry>
       <material name="ball_joint_rod_end_2_material">
         <color rgba="0.980392 0.713725 0.00392157 1"/>
@@ -675,7 +663,7 @@
     <visual>
       <origin xyz="-0.0771082 0.49831 -0.0549918" rpy="2.58574 -0.016031 0.110196"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/left_foot.stl"/>
+        <mesh filename="package://assets/left_foot.stl"/>
       </geometry>
       <material name="left_foot_material">
         <color rgba="0.972549 0.529412 0.00392157 1"/>
@@ -741,7 +729,7 @@
     <visual>
       <origin xyz="-0.00985322 -0.0403881 0.1509" rpy="-3.14159 -1.68146e-09 2.42973e-26"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/head_bottom.stl"/>
+        <mesh filename="package://assets/head_bottom.stl"/>
       </geometry>
       <material name="head_bottom_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -759,7 +747,7 @@
     <visual>
       <origin xyz="0.0344254 0.174185 -0.0300032" rpy="1.1462 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://wolfgang_description/urdf/assets/head_top.stl"/>
+        <mesh filename="package://assets/head_top.stl"/>
       </geometry>
       <material name="head_top_material">
         <color rgba="0.231373 0.380392 0.705882 1"/>

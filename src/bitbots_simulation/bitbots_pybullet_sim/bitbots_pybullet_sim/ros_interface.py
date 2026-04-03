@@ -1,5 +1,6 @@
 import time
 
+import numpy as np
 import rclpy
 from bitbots_utils.transforms import xyzw2wxyz
 from geometry_msgs.msg import PointStamped
@@ -157,7 +158,7 @@ class ROSInterface:
         self.last_linear_vel = linear_vel
         # adding gravity to the acceleration
         gravity_vector = (0, 0, 9.81)
-        gravity_rotated = rotate_vector(gravity_vector, qinverse(xyzw2wxyz(orientation)))
+        gravity_rotated = rotate_vector(gravity_vector, qinverse(xyzw2wxyz(np.array(orientation))))
         linear_acc = tuple(
             [linear_acc[0] + gravity_rotated[0], linear_acc[1] + gravity_rotated[1], linear_acc[2] + gravity_rotated[2]]
         )
@@ -173,8 +174,8 @@ class ROSInterface:
         self.imu_publisher.publish(self.get_imu_msg())
 
     def get_pressure_filtered_left(self):
-        if len(self.simulation.pressure_sensors) == 0:
-            self.node.get_logger().warn_once("No pressure sensors found in simulation model")
+        if len(self.simulation.pressure_sensors[self.robot_index]) == 0:
+            self.node.get_logger().warning("No pressure sensors found in simulation model")
             return self.foot_msg_left
         f_llb = self.simulation.pressure_sensors[self.robot_index]["LLB"].get_force()
         f_llf = self.simulation.pressure_sensors[self.robot_index]["LLF"].get_force()
@@ -187,8 +188,8 @@ class ROSInterface:
         return self.foot_msg_left
 
     def get_pressure_filtered_right(self):
-        if len(self.simulation.pressure_sensors) == 0:
-            self.node.get_logger().warn_once("No pressure sensors found in simulation model")
+        if len(self.simulation.pressure_sensors[self.robot_index]) == 0:
+            self.node.get_logger().warning("No pressure sensors found in simulation model")
             return self.foot_msg_right
         f_rlb = self.simulation.pressure_sensors[self.robot_index]["RLB"].get_force()
         f_rlf = self.simulation.pressure_sensors[self.robot_index]["RLF"].get_force()
@@ -202,8 +203,8 @@ class ROSInterface:
 
     def publish_foot_pressure(self):
         # some models dont have sensors
-        if len(self.simulation.pressure_sensors) == 0:
-            self.node.get_logger().warn_once("No pressure sensors found in simulation model")
+        if len(self.simulation.pressure_sensors[self.robot_index]) == 0:
+            self.node.get_logger().warning("No pressure sensors found in simulation model")
             return
 
         f_llb = self.simulation.pressure_sensors[self.robot_index]["LLB"].get_force()
