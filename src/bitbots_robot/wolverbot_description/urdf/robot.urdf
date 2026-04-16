@@ -782,4 +782,35 @@
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="10" lower="-1.5708" upper="1.5708"/>
   </joint>
+
+  <!-- Dummy frames required by bitbots stack -->
+
+  <link name="r_sole"/>
+  <joint name="right_foot_to_r_sole" type="fixed">
+    <parent link="right_foot"/>
+    <child link="r_sole"/>
+    <origin xyz="0.0 0.017 -0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="l_sole"/>
+  <joint name="left_foot_to_l_sole" type="fixed">
+    <parent link="left_foot"/>
+    <child link="l_sole"/>
+    <origin xyz="0.0 -0.017 -0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="imu_frame_uncalibrated"/>
+  <joint name="torso_to_imu_frame_uncalibrated" type="fixed">
+    <parent link="torso"/>
+    <child link="imu_frame_uncalibrated"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_footprint"/>
+  <joint name="base_link_to_base_footprint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
 </robot>

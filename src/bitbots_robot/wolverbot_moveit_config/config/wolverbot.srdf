@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<robot name="wolverbot">
+    <!--GROUPS: Representation of a set of joints and links used for IK planning-->
+    <group name="LeftLeg">
+        <link name="l_sole" />
+        <joint name="hip_left_z" />
+        <joint name="hip_left_x" />
+        <joint name="left_leg_raise" />
+        <joint name="left_shin_extension" />
+        <joint name="left_foot_flexion" />
+        <joint name="left_foot_eversion" />
+    </group>
+    <group name="RightLeg">
+        <link name="r_sole" />
+        <joint name="hip_right_z" />
+        <joint name="hip_right_x" />
+        <joint name="right_leg_raise" />
+        <joint name="right_shin_extension" />
+        <joint name="right_foot_flexion" />
+        <joint name="right_foot_eversion" />
+    </group>
+    <group name="Legs">
+        <joint name="hip_left_z" />
+        <joint name="hip_left_x" />
+        <joint name="left_leg_raise" />
+        <joint name="left_shin_extension" />
+        <joint name="left_foot_flexion" />
+        <joint name="left_foot_eversion" />
+        <joint name="hip_right_z" />
+        <joint name="hip_right_x" />
+        <joint name="right_leg_raise" />
+        <joint name="right_shin_extension" />
+        <joint name="right_foot_flexion" />
+        <joint name="right_foot_eversion" />
+    </group>
+    <group name="LeftArm">
+        <joint name="arm_L_1" />
+        <joint name="arm_L_2" />
+        <joint name="arm_L_3" />
+    </group>
+    <group name="RightArm">
+        <joint name="arm_R_1" />
+        <joint name="arm_R_2" />
+        <joint name="arm_R_3" />
+    </group>
+    <group name="Head">
+        <joint name="head_turn" />
+        <joint name="head_nod" />
+    </group>
+    <group name="All">
+        <joint name="head_turn" />
+        <joint name="head_nod" />
+        <joint name="hip_left_z" />
+        <joint name="hip_left_x" />
+        <joint name="left_leg_raise" />
+        <joint name="left_shin_extension" />
+        <joint name="left_foot_flexion" />
+        <joint name="left_foot_eversion" />
+        <joint name="arm_L_1" />
+        <joint name="arm_L_2" />
+        <joint name="arm_L_3" />
+        <joint name="hip_right_z" />
+        <joint name="hip_right_x" />
+        <joint name="right_leg_raise" />
+        <joint name="right_shin_extension" />
+        <joint name="right_foot_flexion" />
+        <joint name="right_foot_eversion" />
+        <joint name="arm_R_1" />
+        <joint name="arm_R_2" />
+        <joint name="arm_R_3" />
+    </group>
+
+    <!--DISABLE COLLISIONS: adjacent links don't need collision checking-->
+    <disable_collisions link1="torso" link2="hip_right_z" reason="Adjacent" />
+    <disable_collisions link1="torso" link2="hip_left_z" reason="Adjacent" />
+    <disable_collisions link1="torso" link2="part_1" reason="Adjacent" />
+    <disable_collisions link1="torso" link2="part_1_2" reason="Adjacent" />
+    <disable_collisions link1="torso" link2="head_bottom" reason="Adjacent" />
+    <disable_collisions link1="hip_right_z" link2="hip_right_x" reason="Adjacent" />
+    <disable_collisions link1="hip_right_x" link2="right_thigh" reason="Adjacent" />
+    <disable_collisions link1="right_thigh" link2="right_shin" reason="Adjacent" />
+    <disable_collisions link1="right_shin" link2="ball_joint_rod_end" reason="Adjacent" />
+    <disable_collisions link1="ball_joint_rod_end" link2="right_foot" reason="Adjacent" />
+    <disable_collisions link1="hip_left_z" link2="hip_left_x" reason="Adjacent" />
+    <disable_collisions link1="hip_left_x" link2="left_thigh" reason="Adjacent" />
+    <disable_collisions link1="left_thigh" link2="left_shin" reason="Adjacent" />
+    <disable_collisions link1="left_shin" link2="ball_joint_rod_end_2" reason="Adjacent" />
+    <disable_collisions link1="ball_joint_rod_end_2" link2="left_foot" reason="Adjacent" />
+    <disable_collisions link1="part_1" link2="left_arm" reason="Adjacent" />
+    <disable_collisions link1="left_arm" link2="left_hand" reason="Adjacent" />
+    <disable_collisions link1="part_1_2" link2="right_arm" reason="Adjacent" />
+    <disable_collisions link1="right_arm" link2="right_hand" reason="Adjacent" />
+    <disable_collisions link1="head_bottom" link2="head_top" reason="Adjacent" />
+</robot>
