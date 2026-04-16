@@ -205,6 +205,7 @@ make = ">=4.4.1,<5"  # To avoid issues in the CI
 
 [feature.ros.target.linux-64.dependencies]
 # For now Webots is only packaged for x86-64 Linux
+#webots = ">=2022b,<2023a"
 webots = ">=2022b,<2023a"
 
 [feature.format.dependencies]
